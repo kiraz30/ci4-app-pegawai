@@ -21,6 +21,13 @@
                         <td><?= $key+1; ?></td>
                         <td><?= $row->nama_jabatan; ?></td>
                         <td><?= $row->deskripsi_jabatan; ?></td>
+                        <td>
+                            <form action="/jabatan/v1/delete/<?= $row->id;?>" method="POST">
+                                <a href="/jabatan/v1/edit/<?= $row->id;?>" class="btn btn-warning">Edit</a>
+                                <?= csrf_field(); ?>
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php }?>
             </tbody>

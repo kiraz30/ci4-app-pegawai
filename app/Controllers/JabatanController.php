@@ -43,16 +43,24 @@ class JabatanController extends BaseController
 
     public function edit($id)
     {
-        //
+        $data['jabatan'] = $this->modelJabatan->find($id);
+        return view('jabatan/edit', $data);
     }
 
     public function update($id)
     {
-        //
+        $data = [
+            'id'=>$id,
+            'nama_jabatan'=>$this->request->getPost('nama_jabatan'),
+            'deskripsi_jabatan'=>$this->request->getPost('deskripsi_jabatan'),
+        ];
+        $this->modelJabatan->save( $data);
+        return redirect()->to('/jabatan/v1/');
     }
 
     public function delete($id)
     {
-        //
+        $this->modelJabatan->delete($id);
+        return redirect()->to('/jabatan/v1/');
     }
 }
