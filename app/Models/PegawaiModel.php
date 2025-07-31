@@ -15,7 +15,11 @@ class PegawaiModel extends Model
     protected $allowedFields    = ['nama_pegawai','jabatan_id','alamat','no_hp'];
 
  public function getPegawaiJabatan(){
-    return $this->select('pegawai.*, jabatan.nama_jabatan, jabatan.deskripsi_jabatan')->join('jabatan, jabatan.id = pegawawai.jabatan_id')->findAll();
- }
+
+   return $this->select('pegawai.*, jabatan.nama_jabatan, jabatan.deskripsi_jabatan')
+                ->join('jabatan', 'jabatan.id = pegawai.jabatan_id')
+                ->findAll();
+
+}
 
 }
